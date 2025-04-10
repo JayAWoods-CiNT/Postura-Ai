@@ -11,7 +11,7 @@ with open('persona.json', 'r') as file:
 def chat():
     while True:
         user_input = input("You: ")
-        response = openai.ChatCompletion.create(
+        response = openai.ChatCompletion.create(  # Correct method
             model="gpt-3.5-turbo",  # Or gpt-4 if available
             messages=[
                 {"role": "system", "content": persona['tone'] + " " + persona['behavior']},
@@ -22,5 +22,3 @@ def chat():
 
 if __name__ == "__main__":
     chat()
-
-
