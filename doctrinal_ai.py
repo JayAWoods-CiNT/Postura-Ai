@@ -1,9 +1,8 @@
 import openai
 import json
-import time
 
 # Set up OpenAI API Key
-openai.api_key = "YOUR-OPENAI-API-KEY-HERE"
+openai.api_key = "YOUR-OPENAI-API-KEY-HERE"  # Replace with your actual OpenAI API key
 
 # Load persona (doctrine and tone)
 with open('persona.json', 'r') as file:
@@ -12,7 +11,7 @@ with open('persona.json', 'r') as file:
 def chat():
     while True:
         user_input = input("You: ")
-        response = openai.chat_completions.create(
+        response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # Or gpt-4 if available
             messages=[
                 {"role": "system", "content": persona['tone'] + " " + persona['behavior']},
@@ -23,4 +22,5 @@ def chat():
 
 if __name__ == "__main__":
     chat()
+
 
