@@ -12,11 +12,15 @@ with open('persona.json', 'r') as file:
 def chat():
     while True:
         user_input = input("You: ")
-        response = openai.Completion.create(
-            model="gpt-3.5-turbo",  # You can change this to GPT-4 if available
-            prompt=f"{persona['tone']} {persona['behavior']} {user_input}",
-            max_tokens=150
-        )
+        response = openai.chat_completions.create(
+    model="gpt-3.5-turbo",  # Or gpt-4 if available
+    messages=[
+        {"role": "system", "content": persona['tone'] + " " + persona['behavior']},
+        {"role": "user", "content": user_input}
+    ]
+
+
+    
         print("AI: ", response.choices[0].text.strip())
 
 if __name__ == "__main__":
