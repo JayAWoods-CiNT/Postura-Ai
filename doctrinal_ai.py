@@ -18,6 +18,8 @@ def chat():
         {"role": "system", "content": persona['tone'] + " " + persona['behavior']},
         {"role": "user", "content": user_input}
     ]
+)
+
 
 
     
