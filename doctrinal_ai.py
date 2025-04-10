@@ -13,17 +13,13 @@ def chat():
     while True:
         user_input = input("You: ")
         response = openai.chat_completions.create(
-    model="gpt-3.5-turbo",  # Or gpt-4 if available
-    messages=[
-        {"role": "system", "content": persona['tone'] + " " + persona['behavior']},
-        {"role": "user", "content": user_input}
-    ]
-)
-
-
-
-    
-        print("AI: ", response.choices[0].text.strip())
+            model="gpt-3.5-turbo",  # Or gpt-4 if available
+            messages=[
+                {"role": "system", "content": persona['tone'] + " " + persona['behavior']},
+                {"role": "user", "content": user_input}
+            ]
+        )
+        print("AI: ", response['choices'][0]['message']['content'].strip())
 
 if __name__ == "__main__":
     chat()
